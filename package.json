@@ -1,0 +1,29 @@
+{
+  "name": "vibesync",
+  "version": "1.0.0",
+  "description": "This is a chat Application created by Miraz Zim",
+  "main": "app.js",
+  "scripts": {
+    "start": "cross-env NODE_ENV=development nodemon app.js",
+    "prod": "cross-env NODE_ENV=production node app.js"
+  },
+  "author": "Miraz Zim <miraz.zim.38@gmail.com>",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "cookie-parser": "^1.4.7",
+    "cross": "^1.0.0",
+    "dotenv": "^16.4.7",
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "express-validator": "^7.2.1",
+    "http-errors": "^2.0.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.13.0",
+    "multer": "^1.4.5-lts.2",
+    "nodemon": "^3.1.9"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3"
+  }
+}
