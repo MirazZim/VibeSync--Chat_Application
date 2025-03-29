@@ -1,14 +1,18 @@
+// external imports
 const express = require("express");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 
+// internal imports
+const {notFoundHandler, errorHandler} = require("./middlewares/Common/errorHandler");
+
 const app = express();
 dotenv.config();
 
 // Database connection
-mongoose.connect(process.env.MONGO_CONNECT)
+mongoose.connect(process.env.MONGO_CONNECT, {useNewUrlParser: true, useUnifiedTopology: true})
   .then(() => console.log("Database connected"))
   .catch((err) => console.error("Database connection error:", err));
 
@@ -27,11 +31,10 @@ app.use(cookieParser(process.env.COOKIE_SECRET));
 
 // Routing setup (add your routes here later)
 
-// Error handling (basic example, expand as needed)
-app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).send("Something went wrong!");
-});
+//404 error handler
+app.use(notFoundHandler);
+//default error handler
+app.use(errorHandler);
 
 // Start server
 const PORT = process.env.PORT || 6000;
