@@ -4,6 +4,7 @@ const dotenv = require("dotenv");
 const mongoose = require("mongoose");
 const path = require("path");
 const cookieParser = require("cookie-parser");
+const loginRouter = require("./Router/loginRouter");
 
 // internal imports
 const {notFoundHandler, errorHandler} = require("./middlewares/Common/errorHandler");
@@ -30,6 +31,9 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(cookieParser(process.env.COOKIE_SECRET));
 
 // Routing setup (add your routes here later)
+app.use('/', loginRouter);
+// app.use('/users', usersRouter);
+// app.use('/inbox', inboxRouter);
 
 //404 error handler
 app.use(notFoundHandler);
